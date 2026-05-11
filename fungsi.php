@@ -16,7 +16,7 @@ function db(){
         "localhost",
         "root",
         "root",//jika anda menggunakan xampp, kosongkan ""
-        "fesnuk_db"
+        "fesnuk"
     );
     if($koneksi->connect_errno == 1){
         return $koneksi->connect_error;
@@ -34,14 +34,24 @@ function registrasi($user,$pass){
     <?php
 }
 function login($user,$pass){
-    $query = "SELECT * FROM user WHERE username = $user 
-    AND password = $pass";
+    $query = "SELECT * FROM user WHERE
+    username = '$user' AND
+    password = '$pass'";
+
     $data = mysqli_query(db(),$query);
+
     $cek = mysqli_num_rows($data);
+
     if($cek > 0){
-        header("Location:admin/index.php");
+        while($data_inti = mysqli_fetch_assoc($data)){
+            if($data_inti['role'] == "pengguna"){
+                header("Location: user/index.php");
+            }else if($data_inti['role'] == "penguasa"){
+                header("Location: admin/index.php");
+            }
+        }
     }else{
-        header("Location:user/index.php");
+        header("Location: login.php?status=no_akun");
     }
 }
 

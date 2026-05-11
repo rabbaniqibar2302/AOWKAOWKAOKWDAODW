@@ -35,12 +35,12 @@ include 'fungsi.php';
                 <form action ="" method="POST">
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Username</label>
-                    <input type="text" class="form-control" >
+                    <input type="text" class="form-control" name="username">
                     <div id="emailHelp" class="form-text">Masukan Username Anda!</div>
                   </div>
                   <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control">
+                    <input type="password" class="form-control" name="password">
                   </div>
                   <input type="submit" class="btn btn-primary" name="dor" value="Login">
                 </form>
