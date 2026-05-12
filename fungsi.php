@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 function cek_data($data){
     if(isset($_POST[$data]) == true){
         if($_POST[$data] == NULL){
@@ -45,8 +47,10 @@ function login($user,$pass){
     if($cek > 0){
         while($data_inti = mysqli_fetch_assoc($data)){
             if($data_inti['role'] == "pengguna"){
+                $_SESSION["nama"] = $data_inti["username"];
                 header("Location: user/index.php");
             }else if($data_inti['role'] == "penguasa"){
+                $_SESSION["nama"] = $data_inti["username"];
                 header("Location: admin/index.php");
             }
         }
