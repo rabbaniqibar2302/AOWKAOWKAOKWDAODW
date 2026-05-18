@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
 function cek_data($data){
     if(isset($_POST[$data]) == true){
         if($_POST[$data] == NULL){
@@ -18,7 +16,7 @@ function db(){
         "localhost",
         "root",
         "root",//jika anda menggunakan xampp, kosongkan ""
-        "fesnuk"
+        "fesnuk_db"
     );
     if($koneksi->connect_errno == 1){
         return $koneksi->connect_error;
@@ -36,26 +34,23 @@ function registrasi($user,$pass){
     <?php
 }
 function login($user,$pass){
-    $query = "SELECT * FROM user WHERE
-    username = '$user' AND
-    password = '$pass'";
-
+    $query = "SELECT * FROM user WHERE 
+    username = '$user'
+    AND password = '$pass'";
     $data = mysqli_query(db(),$query);
-
     $cek = mysqli_num_rows($data);
-
     if($cek > 0){
         while($data_inti = mysqli_fetch_assoc($data)){
-            if($data_inti['role'] == "pengguna"){
-                $_SESSION["nama"] = $data_inti["username"];
-                header("Location: user/index.php");
-            }else if($data_inti['role'] == "penguasa"){
+            if($data_inti["role"] == "penguasa"){
                 $_SESSION["nama"] = $data_inti["username"];
                 header("Location: admin/index.php");
+            }elseif($data_inti["role"] == "pengguna"){
+                $_SESSION["nama"] = $data_inti["username"];
+                header("Location: user/index.php");
             }
         }
     }else{
-        header("Location: login.php?status=no_akun");
+        header("Location:login.php?status=no_akun");
     }
 }
 
