@@ -35,7 +35,7 @@ include 'fungsi.php';
                 <form action ="" method="POST">
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Username</label>
-                    <input type="text" class="form-control" name="username" >
+                    <input type="text" class="form-control" name="username">
                     <div id="emailHelp" class="form-text">Masukan Username Anda!</div>
                   </div>
                   <div class="mb-3">

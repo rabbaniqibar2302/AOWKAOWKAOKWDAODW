@@ -1,11 +1,13 @@
 <?php
 session_start();
+
 if(!(isset($_SESSION["nama"]))){
     header("Location: ../login.php?status=trespass");
 }
 ?>
+
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,10 +36,17 @@ if(!(isset($_SESSION["nama"]))){
     <div class="container">
         <div class="row">
             <div class="col">Selamat Datang</div>
-            <div class="col"></div>
+            <div class="col">
+                <h1>Hai</h1>
+                <h1>
+                    <?php
+                    echo $_SESSION["nama"];
+                    ?>
+                </h1>
+            </div>
             <div class="col">
                 <a class="btn btn-danger" href="../logout.php">
-                    Logout
+                    Log Out
                 </a>
             </div>
         </div>

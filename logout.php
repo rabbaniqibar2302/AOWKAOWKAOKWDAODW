@@ -1,5 +1,7 @@
 <?php
+
 session_start();
 session_destroy();
-header("Location:regist.php");
+header("Location: login.php?status=out");
+
 ?>
